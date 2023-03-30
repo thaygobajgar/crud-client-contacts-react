@@ -3,7 +3,11 @@ import { AuthProvider } from "./AuthContext";
 
 import { ContactContextProvider } from "./ContactContext";
 
-const Providers = ({ children }) => {
+export interface iProvidersProps {
+  children: React.ReactNode;
+}
+
+const Providers = ({ children }: iProvidersProps) => {
   return (
     <AuthProvider>
       <ContactContextProvider>{children}</ContactContextProvider>

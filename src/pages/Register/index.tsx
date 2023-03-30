@@ -2,27 +2,24 @@ import React, { useContext } from "react";
 import Header from "../../components/Header";
 import Main from "../../components/Main";
 import { useForm } from "react-hook-form";
-import { iClient } from "../../database";
 import { StyledButton } from "../../styles/buttons";
-import { api } from "../../services/api";
-import { useNavigate } from "react-router-dom";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { registerClientSchema } from "../../schemas/client.schemas";
-import { AuthContext } from "../../contexts/AuthContext";
+import { iClientRegister, useAuthContext } from "../../contexts/AuthContext";
 
-const RegisterPage = () => {
-  const { clientRegister } = useContext(AuthContext);
+export const RegisterPage = () => {
+  const { clientRegister } = useAuthContext();
 
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm({
+  } = useForm<iClientRegister>({
     resolver: yupResolver(registerClientSchema),
   });
 
-  const submit = async (data) => {
+  const submit = async (data: iClientRegister) => {
     clientRegister(data);
     reset();
   };

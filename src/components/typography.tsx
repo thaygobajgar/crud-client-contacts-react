@@ -8,9 +8,16 @@ interface iBaseTypographyProps {
   opacity?: number;
   fontWeight?: 600 | 500 | 400;
   color?: "black" | "white" | "blue" | "red";
+  disabled?: boolean;
+  onClick?: () => void;
 }
 
-const BaseTypography = ({ children, className, tag }: iBaseTypographyProps) => {
+const BaseTypography = ({
+  children,
+  className,
+  tag,
+  onClick,
+}: iBaseTypographyProps) => {
   return (
     <>
       {!tag && <p className={className}>{children}</p>}
@@ -21,7 +28,11 @@ const BaseTypography = ({ children, className, tag }: iBaseTypographyProps) => {
       {tag === "h5" && <h5 className={className}>{children}</h5>}
       {tag === "h6" && <h6 className={className}>{children}</h6>}
       {tag === "p" && <p className={className}>{children}</p>}
-      {tag === "span" && <span className={className}>{children}</span>}
+      {tag === "span" && (
+        <span className={className} onClick={onClick}>
+          {children}
+        </span>
+      )}
       {tag === "small" && <small className={className}>{children}</small>}
       {tag === "label" && <label className={className}>{children}</label>}
       {tag === "caption" && <caption className={className}>{children}</caption>}

@@ -3,26 +3,27 @@ import { useForm } from "react-hook-form";
 import Header from "../../components/Header";
 import Main from "../../components/Main";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { AuthContext } from "../../contexts/AuthContext";
 import {
-  loginSchema,
-  registerClientSchema,
-} from "../../schemas/client.schemas";
+  iClientLogin,
+  iClientRegister,
+  useAuthContext,
+} from "../../contexts/AuthContext";
+import { loginSchema } from "../../schemas/client.schemas";
 import { StyledButton } from "../../styles/buttons";
 
 const LoginPage = () => {
-  const { clientLogin } = useContext(AuthContext);
+  const { clientLogin } = useAuthContext();
 
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm({
+  } = useForm<iClientRegister>({
     resolver: yupResolver(loginSchema),
   });
 
-  const submit = async (data) => {
+  const submit = async (data: iClientLogin) => {
     clientLogin(data);
     reset();
   };

@@ -1,9 +1,9 @@
 import React, { useContext, useEffect } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
-import { AuthContext } from "../../contexts/AuthContext";
+import { AuthContext, useAuthContext } from "../../contexts/AuthContext";
 
 const ProtectedPages = () => {
-  const { client } = useContext(AuthContext);
+  const { client } = useAuthContext();
   const navigate = useNavigate();
   useEffect(() => {
     if (!client) {

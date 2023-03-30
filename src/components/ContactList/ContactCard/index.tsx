@@ -1,11 +1,10 @@
-import React from "react";
-import { iContact } from "../../../database";
 import { VscAccount } from "react-icons/vsc";
 import { StyledText } from "../../../styles/typography";
 import { StyledContactCard } from "./style";
+import { iContactWithoutClient } from "../../../contexts/AuthContext";
 
 interface iContactCardProps {
-  contact: iContact;
+  contact: iContactWithoutClient;
 }
 
 const ContactCard = ({ contact }: iContactCardProps) => {

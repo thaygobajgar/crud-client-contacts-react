@@ -7,6 +7,7 @@ interface iBaseButtonProps {
   fontSize?: number;
   buttonSize?: "big" | "default" | "small";
   buttonStyle?: "default" | "outline" | "inverse";
+  type?: string;
 }
 
 const BaseButton = ({ children, className, tag }: iBaseButtonProps) => {
