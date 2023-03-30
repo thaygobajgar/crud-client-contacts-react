@@ -1,5 +1,7 @@
+import axios from "axios";
 import { createContext, useEffect, useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import { api } from "../services/api";
 
 export interface iContact {
@@ -89,18 +91,24 @@ export const AuthProvider = ({ children }: iAuthProviderProps) => {
     async function clientAutoLogin() {
       const token = localStorage.getItem("@token");
       if (token) {
+        api.defaults.headers.authorization = `Bearer ${token}`;
         try {
-          api.defaults.headers.authorization = `Bearer ${token}`;
           const res = await api.get<iClientProfile>("/clients/profile");
           setClient(res.data);
+          toast.success(
+            `Bem vindo(a) ${client?.firstName} ${client?.lastName}`
+          );
           navigate("/dashboard");
         } catch (error) {
-          console.log(error);
+          if (axios.isAxiosError(error)) {
+            console.log(error);
+            toast.error(error.response?.data.message);
+          }
         }
       }
     }
     clientAutoLogin();
-  });
+  }, []);
 
   const clientRegister = async (data: iClientRegister) => {
     try {
@@ -112,7 +120,10 @@ export const AuthProvider = ({ children }: iAuthProviderProps) => {
       setClient(res.data);
       navigate("/dashboard");
     } catch (error) {
-      console.log(error);
+      if (axios.isAxiosError(error)) {
+        console.log(error);
+        toast.error(error.response?.data.message);
+      }
     }
   };
 
@@ -125,7 +136,11 @@ export const AuthProvider = ({ children }: iAuthProviderProps) => {
       setClient(client.data);
       navigate("/dashboard");
     } catch (error) {
-      console.log(error);
+      if (axios.isAxiosError(error)) {
+        console.log(error);
+
+        toast.error(error.response?.data.message);
+      }
     }
   };
 
