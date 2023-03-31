@@ -1,10 +1,18 @@
 import React, { useContext } from "react";
-import { AuthContext } from "../../contexts/AuthContext";
+import {
+  AuthContext,
+  iContact,
+  iContactWithoutClient,
+} from "../../contexts/AuthContext";
 import { ContactContext } from "../../contexts/ContactContext";
 
 import ContactCard from "./ContactCard";
 import { StyledContactList } from "./style";
-const ContactList = ({ contacts }) => {
+
+interface iContactListProps {
+  contacts: iContactWithoutClient[];
+}
+const ContactList = ({ contacts }: iContactListProps) => {
   return (
     <StyledContactList>
       {contacts &&
