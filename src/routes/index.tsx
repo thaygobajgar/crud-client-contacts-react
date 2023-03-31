@@ -1,34 +1,24 @@
-// import { Route, Routes, Navigate } from "react-router-dom";
-// import Homepage from "../pages/Homepage";
+import { Route, Routes, Navigate } from "react-router-dom";
+import Dashboard from "../pages/Dashboard";
+import React from "react";
+import LoginPage from "../pages/Login";
+import RegisterPage from "../pages/Register";
+import { ContactContextProvider } from "../contexts/ContactContext";
+import ProtectedPages from "../pages/ProtectedPages";
 
-// const RoutesMain = () => (
-//   <Routes>
-//     <Route path="/" element={<Homepage />} />
+const AppRoutes = () => {
+  return (
+    <Routes>
+      <Route path="/" element={<LoginPage />} />
+      <Route path="/register" element={<RegisterPage />} />
 
-//     <Route path="*" element={<Navigate to="/" />} />
-//   </Routes>
-// );
-// export default RoutesMain;
+      <Route element={<ProtectedPages />}>
+        <Route path="/dashboard" element={<Dashboard />} />
+      </Route>
 
-// {
-//   /* <Route element={<AuthProvider />}> */
-// }
-// {
-//   /* <Route path="/register" element={<RegisterPage />} /> */
-// }
-// {
-//   /* <Route element={<Providers />}>
-//     <Route path="/dashboard" element={<Dashboard />}>
-//           <Route path="home" element={<HomePage />} />
-//           <Route path="task" element={<Tasks />} />
-//           <Route path="finance" element={<Finances />} />
-//           <Route path="alarm" element={<AlarmPage />} />
-//         </Route>
-//     </Route> */
-// }
-// {
-//   /* </Route> */
-// }
-// {
-//   /* </Route> */
-// }
+      <Route path="*" element={<h1>404 Page not found</h1>} />
+    </Routes>
+  );
+};
+
+export default AppRoutes;

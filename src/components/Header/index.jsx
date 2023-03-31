@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import { StyledButton } from "../../styles/buttons";
 import { MdSearch, MdNotifications } from "react-icons/md";
 import { StyledHeader, StyledHeaderForm } from "./style";
 import Container from "../container";
+import { AuthContext } from "../../contexts/AuthContext";
+import { StyledText } from "../../styles/typography";
 
 const Header = () => {
+  const { client, clientLogout } = useContext(AuthContext);
   return (
     <StyledHeader>
       <Container>
@@ -28,6 +31,9 @@ const Header = () => {
             src="https://http2.mlstatic.com/D_NQ_NP_857361-MLB32561363740_102019-O.jpg"
             alt="nome do usuario"
           />
+          <StyledText tag="span" fontSize={6}>
+            Logout
+          </StyledText>
         </div>
       </Container>
     </StyledHeader>
