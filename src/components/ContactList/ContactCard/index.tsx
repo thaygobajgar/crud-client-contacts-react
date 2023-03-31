@@ -1,7 +1,7 @@
 import { VscAccount } from "react-icons/vsc";
+import { iContactWithoutClient } from "../../../interfaces/contacts.interfaces";
 import { StyledText } from "../../../styles/typography";
 import { StyledContactCard } from "./style";
-import { iContactWithoutClient } from "../../../contexts/AuthContext";
 
 interface iContactCardProps {
   contact: iContactWithoutClient;

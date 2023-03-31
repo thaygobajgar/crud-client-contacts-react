@@ -8,11 +8,7 @@ interface iModalProps {
 }
 const Modal = ({ children, handleModal, title }: iModalProps) => {
   return (
-    <StyledModalContainer
-      onClick={() => {
-        handleModal();
-      }}
-    >
+    <StyledModalContainer>
       <StyledModalContent>
         <header className="modal-header">
           <h3>{title}</h3>

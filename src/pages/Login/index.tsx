@@ -3,17 +3,18 @@ import { useForm } from "react-hook-form";
 import Header from "../../components/Header";
 import Main from "../../components/Main";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useAuthContext } from "../../contexts/AuthContext";
+import { loginSchema } from "../../schemas/client.schemas";
+import { StyledButton } from "../../styles/buttons";
 import {
   iClientLogin,
   iClientRegister,
-  useAuthContext,
-} from "../../contexts/AuthContext";
-import { loginSchema } from "../../schemas/client.schemas";
-import { StyledButton } from "../../styles/buttons";
+} from "../../interfaces/client.interfaces";
+import { useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
   const { clientLogin } = useAuthContext();
-
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -44,6 +45,9 @@ const LoginPage = () => {
           </div>
           <StyledButton type="submit">Login</StyledButton>
         </form>
+        <StyledButton onClick={() => navigate("/register")}>
+          Cadastrar
+        </StyledButton>
       </Main>
     </>
   );

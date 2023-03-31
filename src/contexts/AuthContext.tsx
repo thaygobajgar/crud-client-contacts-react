@@ -2,72 +2,12 @@ import axios from "axios";
 import { createContext, useEffect, useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import {
+  iClientLogin,
+  iClientProfile,
+  iClientRegister,
+} from "../interfaces/client.interfaces";
 import { api } from "../services/api";
-
-export interface iContact {
-  firstName: string;
-  lastName: string | null;
-  email: string;
-  phone: string;
-  id: string;
-  createdAt: string;
-  deletedAt: string | null;
-  updatedAt: string | null;
-  client: iClient;
-}
-
-export interface iContactWithoutClient {
-  firstName: string;
-  lastName: string | null;
-  email: string;
-  phone: string;
-  id: string;
-  createdAt: string;
-  deletedAt: string | null;
-  updatedAt: string | null;
-}
-
-export interface iClient {
-  firstName: string;
-  lastName: string;
-  email: string;
-  phone: string;
-  id: string;
-  createdAt: string;
-  deletedAt: string | null;
-  updatedAt: string | null;
-  isAdm: boolean;
-  isActive: boolean;
-}
-
-export interface iClientProfile {
-  firstName: string;
-  lastName: string;
-  email: string;
-  phone: string;
-  id: string;
-  createdAt: string;
-  deletedAt: string | null;
-  updatedAt: string | null;
-  isAdm: boolean;
-  isActive: boolean;
-  contacts: iContactWithoutClient[];
-}
-
-export interface iClientRegister {
-  firstName: string;
-  lastName: string;
-  email: string;
-  phone: string;
-  id: string;
-  password: string;
-  confirmPassword: string;
-}
-
-export interface iClientLogin {
-  email: string;
-  password: string;
-}
 
 export interface iAuthProviderProps {
   children: React.ReactNode;

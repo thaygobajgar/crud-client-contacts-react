@@ -7,13 +7,15 @@ export const StyledContactList = styled.ul`
   justify-content: space-between;
   gap: 1.5rem;
   width: 90%;
-  height: 250px;
+  max-width: 90%;
+  height: 100%;
   border-radius: 12px;
   border: 2px solid black;
   margin: 0 auto;
   overflow-y: auto;
   padding: 6px;
   margin-top: 10px;
+  position: relative;
 
   /* width */
   ::-webkit-scrollbar {
