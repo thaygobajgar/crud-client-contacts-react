@@ -7,14 +7,34 @@ interface iBaseButtonProps {
   fontSize?: number;
   buttonSize?: "big" | "default" | "small";
   buttonStyle?: "default" | "outline" | "inverse";
+  type?: string;
+  onClick?: () => void;
 }
 
-const BaseButton = ({ children, className, tag }: iBaseButtonProps) => {
+const BaseButton = ({
+  children,
+  className,
+  tag,
+  type,
+  onClick,
+}: iBaseButtonProps) => {
   return (
     <>
-      {!tag && <button className={className}>{children}</button>}
-      {tag === "button" && <button className={className}>{children}</button>}
-      {tag === "span" && <span className={className}>{children}</span>}
+      {!tag && (
+        <button className={className} onClick={onClick}>
+          {children}
+        </button>
+      )}
+      {tag === "button" && (
+        <button className={className} onClick={onClick}>
+          {children}
+        </button>
+      )}
+      {tag === "span" && (
+        <span className={className} onClick={onClick}>
+          {children}
+        </span>
+      )}
     </>
   );
 };

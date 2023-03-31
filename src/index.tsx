@@ -6,6 +6,10 @@ import reportWebVitals from "./reportWebVitals";
 import { ColorsTheme, GlobalStyle } from "./styles/global";
 import { ThemeProvider } from "styled-components";
 import { BrowserRouter } from "react-router-dom";
+import { ContactContextProvider } from "./contexts/ContactContext";
+import { AuthProvider } from "./contexts/AuthContext";
+import Providers from "./contexts/providers";
+import { ToastContainer } from "react-toastify";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -16,7 +20,9 @@ root.render(
     <GlobalStyle />
     <ThemeProvider theme={ColorsTheme}>
       <BrowserRouter>
-        <App />
+        <Providers>
+          <App />
+        </Providers>
       </BrowserRouter>
     </ThemeProvider>
   </React.StrictMode>
