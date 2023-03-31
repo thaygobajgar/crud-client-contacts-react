@@ -5,11 +5,13 @@ import { useForm } from "react-hook-form";
 import { StyledButton } from "../../styles/buttons";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { registerClientSchema } from "../../schemas/client.schemas";
-import { iClientRegister, useAuthContext } from "../../contexts/AuthContext";
+import { useAuthContext } from "../../contexts/AuthContext";
+import { iClientRegister } from "../../interfaces/client.interfaces";
+import { useNavigate } from "react-router-dom";
 
 export const RegisterPage = () => {
   const { clientRegister } = useAuthContext();
-
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -61,6 +63,9 @@ export const RegisterPage = () => {
           </div>
           <StyledButton type="submit">Cadastrar</StyledButton>
         </form>
+        <StyledButton onClick={() => navigate("/")}>
+          Já possuí registro?
+        </StyledButton>
       </Main>
     </>
   );
