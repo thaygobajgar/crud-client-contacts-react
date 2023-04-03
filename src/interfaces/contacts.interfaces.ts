@@ -29,3 +29,9 @@ export interface IContactRegister {
   email: string;
   phone: string;
 }
+export interface IContactUpdate {
+  firstName?: string;
+  lastName?: string;
+  email?: string;
+  phone?: string;
+}

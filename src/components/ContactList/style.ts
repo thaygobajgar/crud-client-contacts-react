@@ -8,15 +8,23 @@ export const StyledContactList = styled.ul`
   gap: 1.5rem;
   width: 90%;
   max-width: 90%;
-  height: 100%;
-  border-radius: 12px;
-  border: 2px solid black;
   margin: 0 auto;
   overflow-y: auto;
   padding: 6px;
   margin-top: 10px;
-  position: relative;
-
+  li {
+    width: 44%;
+    height: 80px;
+    button {
+      background-color: ${({ theme }) => theme.colors.brand3};
+      width: 100%;
+      height: 100%;
+    }
+  }
+  button {
+    width: 44%;
+    height: 80px;
+  }
   /* width */
   ::-webkit-scrollbar {
     width: 6px;

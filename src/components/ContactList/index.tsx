@@ -5,12 +5,15 @@ import ContactCard from "./ContactCard";
 import { StyledContactList } from "./style";
 import RegisterContactForm from "./RegisterContactForm";
 import { StyledButton } from "../../styles/buttons";
+import EditContactForm from "./EditContactForm";
+import { useContactContext } from "../../contexts/ContactContext";
 
 interface iContactListProps {
   contacts: iContactWithoutClient[];
 }
 const ContactList = ({ contacts }: iContactListProps) => {
-  const [isModal, setIsModal] = useState(true);
+  const { setEditContact } = useContactContext();
+  const [isModal, setIsModal] = useState(false);
   const [modalType, setModalType] = useState<string | null>(null);
   const handleModal = () => {
     setIsModal(!isModal);
@@ -23,26 +26,43 @@ const ContactList = ({ contacts }: iContactListProps) => {
   return (
     <StyledContactList>
       {isModal && (
-        <Modal handleModal={handleModal} title="Registrar novo contato:">
+        <Modal
+          handleModal={handleModal}
+          title={
+            modalType === "registerContact"
+              ? "Registrar novo contato:"
+              : "Editar contato:"
+          }
+        >
           {modalType === "registerContact" ? (
             <RegisterContactForm handleModal={handleModal} />
           ) : (
-            <h1>oi</h1>
+            <EditContactForm handleModal={handleModal} />
           )}
         </Modal>
       )}
       {contacts &&
         contacts.map((contact) => (
-          <ContactCard key={contact.id} contact={contact} />
+          <ContactCard
+            key={contact.id}
+            contact={contact}
+            onClick={(e) => {
+              setEditContact(contact);
+              handleModalType("editContact");
+              handleModal();
+            }}
+          />
         ))}
-      <StyledButton
-        onClick={() => {
-          handleModal();
-          handleModalType("registerContact");
-        }}
-      >
-        Adicionar contato
-      </StyledButton>
+      <li>
+        <StyledButton
+          onClick={() => {
+            handleModal();
+            handleModalType("registerContact");
+          }}
+        >
+          Adicionar contato
+        </StyledButton>
+      </li>
     </StyledContactList>
   );
 };

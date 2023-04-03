@@ -14,7 +14,7 @@ const Header = () => {
         Logo
         {client && (
           <>
-            <StyledHeaderForm action="">
+            {/* <StyledHeaderForm action="">
               <input
                 type="text"
                 name="search"
@@ -22,13 +22,18 @@ const Header = () => {
                 placeholder="Buscar..."
               />
               <StyledButton>
-                <MdSearch size={30} color="rgba(255,255,255,.5)" />
+                <MdSearch size={20} color="rgba(255,255,255,.5)" />
               </StyledButton>
-            </StyledHeaderForm>
+            </StyledHeaderForm> */}
             <div className="userMenu">
               <VscAccount />
               <StyledText>{client?.firstName}</StyledText>
-              <StyledText onClick={clientLogout} tag="span" fontSize={12}>
+              <StyledText
+                onClick={clientLogout}
+                tag="span"
+                fontSize={12}
+                className="logout"
+              >
                 Logout
               </StyledText>
             </div>
