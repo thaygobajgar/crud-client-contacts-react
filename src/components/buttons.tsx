@@ -8,7 +8,7 @@ interface iBaseButtonProps {
   buttonSize?: "big" | "default" | "small";
   buttonStyle?: "default" | "outline" | "inverse";
   type?: string;
-  onClick?: () => void;
+  onClick?: (event: any) => void;
 }
 
 const BaseButton = ({

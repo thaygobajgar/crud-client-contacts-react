@@ -11,6 +11,7 @@ import {
   iClientRegister,
 } from "../../interfaces/client.interfaces";
 import { useNavigate } from "react-router-dom";
+import { StyledForm } from "../../components/Form/style";
 
 const LoginPage = () => {
   const { clientLogin } = useAuthContext();
@@ -32,22 +33,24 @@ const LoginPage = () => {
     <>
       <Header />
       <Main>
-        <form onSubmit={handleSubmit(submit)}>
-          <div>
-            <label htmlFor="email">Email:</label>
-            <input {...register("email")} />
-            <span>{errors.email?.message}</span>
-          </div>
-          <div>
-            <label htmlFor="password">Senha:</label>
-            <input {...register("password")} />
-            <span>{errors.password?.message}</span>
-          </div>
-          <StyledButton type="submit">Login</StyledButton>
-        </form>
-        <StyledButton onClick={() => navigate("/register")}>
-          Cadastrar
-        </StyledButton>
+        <div>
+          <StyledForm onSubmit={handleSubmit(submit)}>
+            <div>
+              <label htmlFor="email">Email:</label>
+              <input {...register("email")} />
+              <span>{errors.email?.message}</span>
+            </div>
+            <div>
+              <label htmlFor="password">Senha:</label>
+              <input {...register("password")} />
+              <span>{errors.password?.message}</span>
+            </div>
+            <StyledButton type="submit">Login</StyledButton>
+          </StyledForm>
+          <StyledButton onClick={() => navigate("/register")}>
+            Cadastrar
+          </StyledButton>
+        </div>
       </Main>
     </>
   );

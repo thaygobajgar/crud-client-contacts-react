@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useContactContext } from "../../../contexts/ContactContext";
 import { StyledButton } from "../../../styles/buttons";
+import { StyledForm } from "../../Form/style";
 
 interface iRegisterContactFormProps {
   handleModal: () => void;
@@ -28,7 +29,7 @@ const RegisterContactForm = ({ handleModal }: iRegisterContactFormProps) => {
   };
 
   return (
-    <form onSubmit={handleSubmit(submit)}>
+    <StyledForm onSubmit={handleSubmit(submit)}>
       <div>
         <label htmlFor="firstName">Nome:</label>
         <input {...register("firstName")} />
@@ -50,7 +51,7 @@ const RegisterContactForm = ({ handleModal }: iRegisterContactFormProps) => {
         <span>{errors.phone?.message}</span>
       </div>
       <StyledButton type="submit">Cadastrar novo contato</StyledButton>
-    </form>
+    </StyledForm>
   );
 };
 

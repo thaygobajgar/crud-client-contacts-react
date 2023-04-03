@@ -4,12 +4,13 @@ import BaseButton from "../components/buttons";
 export const StyledButton = styled(BaseButton)`
   /* font-family: ; */
   font-size: ${({ fontSize }) => (fontSize ? fontSize : 14)}px;
-  border: 1px solid blue;
+  border: 1px solid ${({ theme }) => theme.colors.brand1};
   border-radius: 12px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.6rem;
+  background-color: ${({ theme }) => theme.colors.brand3};
 
   transition: 0.5s ease;
   &&:hover {
@@ -23,7 +24,7 @@ export const StyledButton = styled(BaseButton)`
     switch (buttonStyle) {
       case "default":
         return css`
-          background-color: ${theme.colors.black};
+          background-color: ${theme.colors.brand3};
         `;
       case "outline":
         return css`
@@ -31,12 +32,12 @@ export const StyledButton = styled(BaseButton)`
         `;
       case "inverse":
         return css`
-          background-color: ${theme.colors.white};
+          background-color: ${theme.colors.brand3};
           color: ${theme.colors.black};
         `;
       default:
         return css`
-          background-color: ${theme.colors.translucid};
+          background-color: ${theme.colors.brand3};
         `;
     }
   }}
@@ -58,12 +59,13 @@ export const StyledButton = styled(BaseButton)`
       case "small":
         return css`
           width: 50px;
-          height: 50px;
+          height: 42px;
           padding: 0 2rem;
         `;
       default:
         return css`
           padding: 0 2rem;
+          height: 32px;
         `;
     }
   }}

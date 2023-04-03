@@ -2,7 +2,7 @@ import "styled-components";
 import styled from "styled-components";
 
 export const StyledContactCard = styled.li`
-  min-width: 45%;
+  width: 44%;
   height: 80px;
   display: flex;
   flex-direction: column;
@@ -11,6 +11,12 @@ export const StyledContactCard = styled.li`
   align-items: center;
   justify-content: center;
   cursor: pointer;
+
+  button {
+    width: 44%;
+    height: 80px;
+    background-color: black;
+  }
 
   @media (max-width: 600px) {
     .hidden-info {
