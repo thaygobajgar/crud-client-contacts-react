@@ -43,6 +43,7 @@ export const AuthProvider = ({ children }: iAuthProviderProps) => {
           if (axios.isAxiosError(error)) {
             console.log(error);
             toast.error(error.response?.data.message);
+            localStorage.removeItem("@token");
           }
         }
       }

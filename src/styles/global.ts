@@ -26,6 +26,8 @@ li{
     list-style: none;
 }
 
+
+
 .container{
   margin: 0 auto;
   width: 100%;
@@ -41,11 +43,16 @@ li{
 
 export const ColorsTheme = {
   colors: {
+    brand1: "#8FCACA",
+    brand2: "#A2E1DB",
+    brand3: "#D4F0F0",
+    translucid: "rgba(255,255,255,.5)",
+    black: "#000",
     white: "#FFFFFF",
-    red: "red",
+    alert: "#FF968A",
+    alert2: "#FFC8A2",
+    success: "#97C1A9",
     blue: "blue",
     green: "green",
-    black: "#000",
-    translucid: "rgba(255,255,255,.5)",
   },
 };

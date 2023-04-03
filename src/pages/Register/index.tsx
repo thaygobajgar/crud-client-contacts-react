@@ -30,42 +30,44 @@ export const RegisterPage = () => {
     <>
       <Header />
       <Main>
-        <form onSubmit={handleSubmit(submit)}>
-          <div>
-            <label htmlFor="firstName">Nome:</label>
-            <input {...register("firstName")} />
-            <span>{errors.firstName?.message}</span>
-          </div>
-          <div>
-            <label htmlFor="lastName">Sobrenome:</label>
-            <input {...register("lastName")} />
-            <span>{errors.lastName?.message}</span>
-          </div>
-          <div>
-            <label htmlFor="email">Email:</label>
-            <input {...register("email")} />
-            <span>{errors.email?.message}</span>
-          </div>
-          <div>
-            <label htmlFor="phone">Celular:</label>
-            <input {...register("phone")} />
-            <span>{errors.phone?.message}</span>
-          </div>
-          <div>
-            <label htmlFor="password">Senha:</label>
-            <input {...register("password")} />
-            <span>{errors.password?.message}</span>
-          </div>
-          <div>
-            <label htmlFor="confirm-password">Confirme sua senha:</label>
-            <input {...register("confirmPassword")} />
-            <span>{errors.confirmPassword?.message}</span>
-          </div>
-          <StyledButton type="submit">Cadastrar</StyledButton>
-        </form>
-        <StyledButton onClick={() => navigate("/")}>
-          Já possuí registro?
-        </StyledButton>
+        <div>
+          <form onSubmit={handleSubmit(submit)}>
+            <div>
+              <label htmlFor="firstName">Nome:</label>
+              <input {...register("firstName")} />
+              <span>{errors.firstName?.message}</span>
+            </div>
+            <div>
+              <label htmlFor="lastName">Sobrenome:</label>
+              <input {...register("lastName")} />
+              <span>{errors.lastName?.message}</span>
+            </div>
+            <div>
+              <label htmlFor="email">Email:</label>
+              <input {...register("email")} />
+              <span>{errors.email?.message}</span>
+            </div>
+            <div>
+              <label htmlFor="phone">Celular:</label>
+              <input {...register("phone")} />
+              <span>{errors.phone?.message}</span>
+            </div>
+            <div>
+              <label htmlFor="password">Senha:</label>
+              <input {...register("password")} />
+              <span>{errors.password?.message}</span>
+            </div>
+            <div>
+              <label htmlFor="confirm-password">Confirme sua senha:</label>
+              <input {...register("confirmPassword")} />
+              <span>{errors.confirmPassword?.message}</span>
+            </div>
+            <StyledButton type="submit">Cadastrar</StyledButton>
+          </form>
+          <StyledButton onClick={() => navigate("/")}>
+            Já possuí registro?
+          </StyledButton>
+        </div>
       </Main>
     </>
   );

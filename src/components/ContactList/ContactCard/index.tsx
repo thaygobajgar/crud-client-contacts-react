@@ -5,11 +5,12 @@ import { StyledContactCard } from "./style";
 
 interface iContactCardProps {
   contact: iContactWithoutClient;
+  onClick?: (event: any) => void;
 }
 
-const ContactCard = ({ contact }: iContactCardProps) => {
+const ContactCard = ({ contact, onClick }: iContactCardProps) => {
   return (
-    <StyledContactCard>
+    <StyledContactCard onClick={onClick}>
       <VscAccount />
       <div>
         <StyledText>{contact.firstName}</StyledText>

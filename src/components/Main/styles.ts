@@ -1,10 +1,11 @@
 import styled from "styled-components";
 
 export const StyledMain = styled.main`
-  position: relative;
-  top: 80px;
   width: 100%;
-  height: 100vh;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   @media (max-width: 600px) {
     top: 200px;
   }
