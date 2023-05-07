@@ -5,6 +5,7 @@ import Container from "../container";
 import { useAuthContext } from "../../contexts/AuthContext";
 import { StyledText } from "../../styles/typography";
 import { VscAccount } from "react-icons/vsc";
+import { StyledTextInput } from "../../styles/input";
 
 const Header = () => {
   const { client, clientLogout } = useAuthContext();
@@ -14,8 +15,8 @@ const Header = () => {
         Logo
         {client && (
           <>
-            {/* <StyledHeaderForm action="">
-              <input
+            <StyledHeaderForm action="">
+              <StyledTextInput
                 type="text"
                 name="search"
                 id="search"
@@ -24,7 +25,7 @@ const Header = () => {
               <StyledButton>
                 <MdSearch size={20} color="rgba(255,255,255,.5)" />
               </StyledButton>
-            </StyledHeaderForm> */}
+            </StyledHeaderForm>
             <div className="userMenu">
               <VscAccount />
               <StyledText>{client?.firstName}</StyledText>
@@ -36,6 +37,11 @@ const Header = () => {
               >
                 Logout
               </StyledText>
+
+              <div className="userToast">
+                <button>Editar cadastro</button>
+                <button>Deletar cadastro</button>
+              </div>
             </div>
           </>
         )}

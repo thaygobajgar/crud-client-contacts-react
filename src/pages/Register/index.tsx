@@ -1,4 +1,3 @@
-import React, { useContext } from "react";
 import Header from "../../components/Header";
 import Main from "../../components/Main";
 import { useForm } from "react-hook-form";
@@ -8,6 +7,9 @@ import { registerClientSchema } from "../../schemas/client.schemas";
 import { useAuthContext } from "../../contexts/AuthContext";
 import { iClientRegister } from "../../interfaces/client.interfaces";
 import { useNavigate } from "react-router-dom";
+import Form from "../../components/Form";
+import { StyledTextInput } from "../../styles/input";
+import { StyledText } from "../../styles/typography";
 
 export const RegisterPage = () => {
   const { clientRegister } = useAuthContext();
@@ -31,39 +33,66 @@ export const RegisterPage = () => {
       <Header />
       <Main>
         <div>
-          <form onSubmit={handleSubmit(submit)}>
+          <Form onSubmit={handleSubmit(submit)}>
             <div>
-              <label htmlFor="firstName">Nome:</label>
-              <input {...register("firstName")} />
-              <span>{errors.firstName?.message}</span>
+              <StyledText tag="label" htmlFor="firstName">
+                Nome:
+              </StyledText>
+              <StyledTextInput type="text" {...register("firstName")} />
+              <StyledText tag="span" fontSize={12} color="--alert-1">
+                {errors.firstName?.message}
+              </StyledText>
             </div>
             <div>
-              <label htmlFor="lastName">Sobrenome:</label>
-              <input {...register("lastName")} />
-              <span>{errors.lastName?.message}</span>
+              <StyledText tag="label" htmlFor="lastName">
+                Sobrenome:
+              </StyledText>
+              <StyledTextInput type="text" {...register("lastName")} />
+              <StyledText tag="span" fontSize={12} color="--alert-1">
+                {errors.lastName?.message}
+              </StyledText>
             </div>
             <div>
-              <label htmlFor="email">Email:</label>
-              <input {...register("email")} />
-              <span>{errors.email?.message}</span>
+              <StyledText tag="label" htmlFor="email">
+                Email:
+              </StyledText>
+              <StyledTextInput type="email" {...register("email")} />
+              <StyledText tag="span" fontSize={12} color="--alert-1">
+                {errors.email?.message}
+              </StyledText>
             </div>
             <div>
-              <label htmlFor="phone">Celular:</label>
-              <input {...register("phone")} />
-              <span>{errors.phone?.message}</span>
+              <StyledText tag="label" htmlFor="phone">
+                Celular:
+              </StyledText>
+              <StyledTextInput type="text" {...register("phone")} />
+              <StyledText tag="span" fontSize={12} color="--alert-1">
+                {errors.phone?.message}
+              </StyledText>
             </div>
             <div>
-              <label htmlFor="password">Senha:</label>
-              <input {...register("password")} />
-              <span>{errors.password?.message}</span>
+              <StyledText tag="label" htmlFor="password">
+                Senha:
+              </StyledText>
+              <StyledTextInput type="password" {...register("password")} />
+              <StyledText tag="span" fontSize={10} color="--alert-1">
+                {errors.password?.message}
+              </StyledText>
             </div>
             <div>
-              <label htmlFor="confirm-password">Confirme sua senha:</label>
-              <input {...register("confirmPassword")} />
-              <span>{errors.confirmPassword?.message}</span>
+              <StyledText tag="label" htmlFor="confirm-password">
+                Confirme sua senha:
+              </StyledText>
+              <StyledTextInput
+                type="password"
+                {...register("confirmPassword")}
+              />
+              <StyledText tag="span" fontSize={12} color="--alert-1">
+                {errors.confirmPassword?.message}
+              </StyledText>
             </div>
             <StyledButton type="submit">Cadastrar</StyledButton>
-          </form>
+          </Form>
           <StyledButton onClick={() => navigate("/")}>
             Já possuí registro?
           </StyledButton>

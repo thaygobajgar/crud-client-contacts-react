@@ -6,9 +6,10 @@ export const StyledForm = styled.form`
   flex-direction: column;
   gap: 12px;
   padding: 12px;
-  border: 1px solid ${({ theme }) => theme.colors.brand2};
+  border: 1px solid var(--brand-2);
   border-radius: 12px;
-  width: 90%;
+  width: 350px;
+  max-width: 90%;
 
   div {
     display: flex;
@@ -18,7 +19,7 @@ export const StyledForm = styled.form`
 
   span {
     font-size: 12px;
-    ${({ theme }) => theme.colors.alert}
+    color: var(--alert-1);
   }
 
   button {
@@ -27,7 +28,7 @@ export const StyledForm = styled.form`
 
   .delete {
     display: flex;
-    background-color: ${({ theme }) => theme.colors.alert};
+    background-color: var(--alert-1);
     width: 100%;
     transition: 0.7 ease;
   }

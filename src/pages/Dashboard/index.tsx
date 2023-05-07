@@ -12,7 +12,12 @@ const Dashboard = () => {
       <Header />
       <Main>
         <StyledDashboard>
-          <StyledTitle tag="h1" fontWeight={600} opacity={0.3} fontSize="one">
+          <StyledTitle
+            tag="h1"
+            fontWeight={600}
+            fontSize="one"
+            color="--brand-1"
+          >
             Contatos:
           </StyledTitle>
           <div className="contacts">

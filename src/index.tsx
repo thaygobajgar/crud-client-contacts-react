@@ -3,13 +3,10 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { ColorsTheme, GlobalStyle } from "./styles/global";
-import { ThemeProvider } from "styled-components";
+import GlobalStyles from "./styles/GlobalStyles";
+
 import { BrowserRouter } from "react-router-dom";
-import { ContactContextProvider } from "./contexts/ContactContext";
-import { AuthProvider } from "./contexts/AuthContext";
 import Providers from "./contexts/providers";
-import { ToastContainer } from "react-toastify";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -17,14 +14,12 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <React.StrictMode>
-    <GlobalStyle />
-    <ThemeProvider theme={ColorsTheme}>
-      <BrowserRouter>
-        <Providers>
-          <App />
-        </Providers>
-      </BrowserRouter>
-    </ThemeProvider>
+    <BrowserRouter>
+      <GlobalStyles />
+      <Providers>
+        <App />
+      </Providers>
+    </BrowserRouter>
   </React.StrictMode>
 );
 

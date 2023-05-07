@@ -11,10 +11,11 @@ interface iContactCardProps {
 const ContactCard = ({ contact, onClick }: iContactCardProps) => {
   return (
     <StyledContactCard onClick={onClick}>
-      <VscAccount />
+      <VscAccount size={20} />
       <div>
-        <StyledText>{contact.firstName}</StyledText>
-        <StyledText>{contact.lastName}</StyledText>
+        <StyledText>
+          {contact.firstName} {contact.lastName}
+        </StyledText>
         <div className="hidden-info">
           <StyledText>{contact.phone}</StyledText>
           <StyledText>{contact.email}</StyledText>

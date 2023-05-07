@@ -14,11 +14,15 @@ export const StyledContactList = styled.ul`
   margin-top: 10px;
   li {
     width: 44%;
-    height: 80px;
+
     button {
-      background-color: ${({ theme }) => theme.colors.brand3};
+      background-color: var(--brand-3);
       width: 100%;
       height: 100%;
+    }
+
+    @media (min-width: 600px) {
+      width: 30%;
     }
   }
   button {
@@ -45,5 +49,10 @@ export const StyledContactList = styled.ul`
   /* Handle on hover */
   ::-webkit-scrollbar-thumb:hover {
     background: #555;
+  }
+
+  @media (min-width: 600px) {
+    justify-content: initial;
+    flex-wrap: wrap;
   }
 `;

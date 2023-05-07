@@ -2,65 +2,68 @@ import styled, { css } from "styled-components";
 import BaseTypography from "../components/typography";
 
 export const StyledTitle = styled(BaseTypography)`
-  /* font-size: 1rem; */
   font-weight: ${({ fontWeight }) => (fontWeight ? fontWeight : 400)};
-  opacity: ${({ opacity }) => (opacity ? opacity : 1)};
-  color: ${({ theme }) => theme.colors.black};
-  &&.grey {
-    color: #00000025; //alterar
-  }
-
-  &&.primary {
-    color: #00ff; //alterar
-  }
-
-  ${({ fontSize }) => {
-    switch (fontSize) {
-      case "one":
-        return css`
-          font-size: 44px;
-          /* line-height? */
-          //acrescentar
-        `;
-
-      case "two":
-        return css`
-          font-size: 36px;
-          /* line-height? */
-          //acrescentar
-        `;
-
-      case "three":
-        return css`
-          font-size: 32px;
-          /* line-height? */
-          //acrescentar
-        `;
-    }
-  }}
+  opacity: ${({ opacity }) => (opacity ? opacity / 100 : 1)};
+  color: ${({ color }) => (color ? `var(${color})` : "var(--grey-0)")};
+  font-size: ${({ fontSize, tag }) =>
+    fontSize
+      ? fontSize
+      : tag
+      ? tag === "h1"
+        ? 44
+        : tag === "h2"
+        ? 36
+        : tag === "h3"
+        ? 32
+        : tag === "h4"
+        ? 28
+        : tag === "h5"
+        ? 24
+        : tag === "h6"
+        ? 20
+        : tag === "h7"
+        ? 16
+        : 16
+      : 16}px;
+  line-height: ${({ fontSize, tag }) =>
+    fontSize
+      ? fontSize
+      : tag
+      ? tag === "h1"
+        ? 56
+        : tag === "h2"
+        ? 45
+        : tag === "h3"
+        ? 40
+        : tag === "h4"
+        ? 35
+        : tag === "h5"
+        ? 30
+        : tag === "h6"
+        ? 25
+        : tag === "h7"
+        ? 20
+        : 20
+      : 20}px;
 `;
 
 export const StyledText = styled(BaseTypography)`
+  color: ${({ color }) => (color ? `var(${color})` : "var(--grey-0)")};
   font-weight: 400;
-  display: flex;
-  flex-wrap: wrap;
-  color: var(--grey-4);
-  font-size: ${({ fontSize }) => (fontSize ? fontSize : 14)}px;
+  font-size: ${({ fontSize }) => (fontSize ? fontSize : 16)}px;
   line-height: ${({ fontSize }) =>
-    fontSize ? +fontSize + +fontSize / 2 : 21}px;
+    fontSize ? +fontSize + +fontSize / 2 : 20}px;
   font-weight: ${({ fontWeight }) => (fontWeight ? fontWeight : 400)};
-  opacity: ${({ opacity }) => (opacity ? opacity : 1)};
-  color: ${({ color, theme }) => (color ? color : theme.colors.black)};
+  opacity: ${({ opacity }) => (opacity ? opacity / 100 : 1)};
 
-  &&.italic {
-    font-style: italic;
-  }
-
-  &&.grey {
-    color: #00000025; //alterar
-  }
-
-  &&.primary {
-    color: #00ff; //alterar
-  }
+  ${({ tag }) => {
+    if (tag === "label") {
+      return css`
+        font-style: normal;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 17px;
+      `;
+    }
+  }}
 `;
