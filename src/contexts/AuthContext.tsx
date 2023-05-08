@@ -3,11 +3,14 @@ import { createContext, useEffect, useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import {
+  iClient,
   iClientLogin,
   iClientProfile,
   iClientRegister,
+  iClientUpdate,
 } from "../interfaces/client.interfaces";
 import { api } from "../services/api";
+import { updateClientSchema } from "../schemas/client.schemas";
 
 export interface iAuthProviderProps {
   children: React.ReactNode;
@@ -15,16 +18,24 @@ export interface iAuthProviderProps {
 
 export interface iAuthContext {
   client: iClientProfile | null;
+  editModal: boolean;
+  deleteModal: boolean;
   clientRegister: (data: iClientRegister) => void;
   clientLogin: (data: iClientLogin) => void;
+  clientUpdate: (data: iClientUpdate) => void;
   clientLogout: () => void;
-  setClient: React.Dispatch<React.SetStateAction<iClientProfile | null>>;
+  deleteClient: () => void;
+  setClient: React.Dispatch<React.SetStateAction<iClientProfile>>;
+  setEditModal: React.Dispatch<React.SetStateAction<boolean>>;
+  setDeleteModal: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export const AuthContext = createContext<iAuthContext>({} as iAuthContext);
 
 export const AuthProvider = ({ children }: iAuthProviderProps) => {
-  const [client, setClient] = useState<iClientProfile | null>(null);
+  const [client, setClient] = useState<iClientProfile>({} as iClientProfile);
+  const [editModal, setEditModal] = useState<boolean>(false);
+  const [deleteModal, setDeleteModal] = useState<boolean>(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -46,6 +57,9 @@ export const AuthProvider = ({ children }: iAuthProviderProps) => {
             localStorage.removeItem("@token");
           }
         }
+      }
+      if (!token) {
+        navigate("/");
       }
     }
     clientAutoLogin();
@@ -85,15 +99,52 @@ export const AuthProvider = ({ children }: iAuthProviderProps) => {
     }
   };
 
+  const deleteClient = async () => {
+    try {
+      await api.delete<void>(`/clients/`);
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        console.log(error);
+
+        toast.error(error.response?.data.message);
+      }
+    }
+  };
+
+  const clientUpdate = async (clientData: iClientUpdate) => {
+    try {
+      const { data } = await api.patch<iClient>(`/clients/`, clientData);
+      const newData: iClientProfile = { ...client, ...data };
+      setClient(newData);
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        console.log(error);
+        toast.error(error.response?.data.message);
+      }
+    }
+  };
+
   const clientLogout = () => {
-    setClient(null);
+    setClient({} as iClientProfile);
     localStorage.removeItem("@token");
     navigate("/");
   };
 
   return (
     <AuthContext.Provider
-      value={{ client, setClient, clientRegister, clientLogin, clientLogout }}
+      value={{
+        client,
+        setClient,
+        clientRegister,
+        clientLogin,
+        clientLogout,
+        clientUpdate,
+        editModal,
+        setEditModal,
+        deleteModal,
+        setDeleteModal,
+        deleteClient,
+      }}
     >
       {children}
     </AuthContext.Provider>

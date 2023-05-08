@@ -1,4 +1,3 @@
-import React, { useContext, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import Header from "../../components/Header";
 import Main from "../../components/Main";
@@ -11,7 +10,9 @@ import {
   iClientRegister,
 } from "../../interfaces/client.interfaces";
 import { useNavigate } from "react-router-dom";
-import { StyledForm } from "../../components/Form/style";
+import { StyledText } from "../../styles/typography";
+import { StyledTextInput } from "../../styles/input";
+import Form from "../../components/Form";
 
 const LoginPage = () => {
   const { clientLogin } = useAuthContext();
@@ -34,19 +35,25 @@ const LoginPage = () => {
       <Header />
       <Main>
         <div>
-          <StyledForm onSubmit={handleSubmit(submit)}>
+          <Form onSubmit={handleSubmit(submit)}>
             <div>
-              <label htmlFor="email">Email:</label>
-              <input {...register("email")} />
-              <span>{errors.email?.message}</span>
+              <StyledText tag="label" htmlFor="email">
+                Email:
+              </StyledText>
+              <StyledTextInput type="email" {...register("email")} />
+              <StyledText tag="span" fontSize={12} color="--alert-1">
+                {errors.email?.message}
+              </StyledText>
             </div>
-            <div>
-              <label htmlFor="password">Senha:</label>
-              <input {...register("password")} />
-              <span>{errors.password?.message}</span>
-            </div>
+            <StyledText tag="label" htmlFor="password">
+              Senha:
+            </StyledText>
+            <StyledTextInput type="password" {...register("password")} />
+            <StyledText tag="span" fontSize={10} color="--alert-1">
+              {errors.password?.message}
+            </StyledText>
             <StyledButton type="submit">Login</StyledButton>
-          </StyledForm>
+          </Form>
           <StyledButton onClick={() => navigate("/register")}>
             Cadastrar
           </StyledButton>

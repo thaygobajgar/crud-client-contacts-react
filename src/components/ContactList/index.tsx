@@ -7,7 +7,7 @@ import RegisterContactForm from "./RegisterContactForm";
 import { StyledButton } from "../../styles/buttons";
 import EditContactForm from "./EditContactForm";
 import { useContactContext } from "../../contexts/ContactContext";
-
+import { IoMdPersonAdd } from "react-icons/io";
 interface iContactListProps {
   contacts: iContactWithoutClient[];
 }
@@ -41,6 +41,17 @@ const ContactList = ({ contacts }: iContactListProps) => {
           )}
         </Modal>
       )}
+      <li>
+        <StyledButton
+          onClick={() => {
+            handleModal();
+            handleModalType("registerContact");
+          }}
+        >
+          <IoMdPersonAdd size={20} />
+          Adicionar contato
+        </StyledButton>
+      </li>
       {contacts &&
         contacts.map((contact) => (
           <ContactCard
@@ -53,16 +64,6 @@ const ContactList = ({ contacts }: iContactListProps) => {
             }}
           />
         ))}
-      <li>
-        <StyledButton
-          onClick={() => {
-            handleModal();
-            handleModalType("registerContact");
-          }}
-        >
-          Adicionar contato
-        </StyledButton>
-      </li>
     </StyledContactList>
   );
 };

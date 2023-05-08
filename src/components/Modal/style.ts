@@ -17,17 +17,18 @@ export const StyledModalContainer = styled.div`
   z-index: 10;
 `;
 export const StyledModalContent = styled.div`
+  .default {
+    min-height: 380px;
+  }
   display: flex;
   flex-direction: column;
 
   width: 350px;
   max-width: 90%;
-  min-height: 380px;
 
   background-color: white;
   border: 1px solid black;
   border-radius: 14px;
-
   .modal-header {
     display: flex;
     align-items: center;
@@ -39,7 +40,7 @@ export const StyledModalContent = styled.div`
     position: relative;
     padding: 12px;
 
-    background-color: var(--color-primary);
+    background-color: var(--brand-1);
 
     h3 {
       color: var(--grey-0);
@@ -50,7 +51,7 @@ export const StyledModalContent = styled.div`
       border-radius: 50%;
 
       color: var(--grey-0);
-      background-color: var(--color-primary);
+      background-color: var(--brand-1);
 
       font-size: 1.5rem;
 
@@ -58,7 +59,7 @@ export const StyledModalContent = styled.div`
       transition: 0.2s;
 
       &:hover {
-        color: var(--color-third);
+        color: var(--brand-3);
       }
     }
   }
@@ -68,5 +69,9 @@ export const StyledModalContent = styled.div`
     justify-content: center;
 
     padding: 25px 2.5rem;
+  }
+
+  .small {
+    min-height: initial;
   }
 `;

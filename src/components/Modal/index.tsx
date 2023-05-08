@@ -5,11 +5,12 @@ interface iModalProps {
   children: React.ReactNode;
   handleModal: () => void;
   title?: string;
+  small?: boolean;
 }
-const Modal = ({ children, handleModal, title }: iModalProps) => {
+const Modal = ({ children, handleModal, title, small }: iModalProps) => {
   return (
     <StyledModalContainer>
-      <StyledModalContent>
+      <StyledModalContent className={small ? "small" : "default"}>
         <header className="modal-header">
           <h3>{title}</h3>
           <button className="close-modal" onClick={handleModal}>

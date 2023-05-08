@@ -1,10 +1,9 @@
 import * as yup from "yup";
-import { registerClientSchema } from "./client.schemas";
 
 const registerContactSchema = yup
   .object({
     firstName: yup.string().required("Nome é obrigatório"),
-    lastName: yup.string().required("Sobrenome é obrigatório"),
+    lastName: yup.string(),
     email: yup
       .string()
       .email("Precisa ser um email válido")
@@ -12,7 +11,8 @@ const registerContactSchema = yup
     phone: yup
       .string()
       .required("Celular é obrigatório")
-      .matches(/.{14}/, "Deve conter ao menos 14 dígitos"),
+      .matches(/.{14}/, "Deve conter ao menos 14 dígitos")
+      .max(14, "Deve conter no maximo 14 digitos"),
   })
   .required();
 

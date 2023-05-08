@@ -6,6 +6,9 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useContactContext } from "../../../contexts/ContactContext";
 import { StyledButton } from "../../../styles/buttons";
 import { StyledForm } from "../../Form/style";
+import Form from "../../Form";
+import { StyledText } from "../../../styles/typography";
+import { StyledTextInput } from "../../../styles/input";
 
 interface iRegisterContactFormProps {
   handleModal: () => void;
@@ -29,29 +32,45 @@ const RegisterContactForm = ({ handleModal }: iRegisterContactFormProps) => {
   };
 
   return (
-    <StyledForm onSubmit={handleSubmit(submit)}>
+    <Form onSubmit={handleSubmit(submit)}>
       <div>
-        <label htmlFor="firstName">Nome:</label>
-        <input {...register("firstName")} />
-        <span>{errors.firstName?.message}</span>
+        <StyledText tag="label" htmlFor="firstName">
+          Nome:
+        </StyledText>
+        <StyledTextInput {...register("firstName")} />
+        <StyledText tag="span" fontSize={12} color="--alert-1">
+          {errors.firstName?.message}
+        </StyledText>
       </div>
       <div>
-        <label htmlFor="lastName">Sobrenome:</label>
-        <input {...register("lastName")} />
-        <span>{errors.lastName?.message}</span>
+        <StyledText tag="label" htmlFor="lastName">
+          Sobrenome:
+        </StyledText>
+        <StyledTextInput {...register("lastName")} />
+        <StyledText tag="span" fontSize={12} color="--alert-1">
+          {errors.lastName?.message}
+        </StyledText>
       </div>
       <div>
-        <label htmlFor="email">Email:</label>
-        <input {...register("email")} />
-        <span>{errors.email?.message}</span>
+        <StyledText tag="label" htmlFor="email">
+          Email:
+        </StyledText>
+        <StyledTextInput type="email" {...register("email")} />
+        <StyledText tag="span" fontSize={12} color="--alert-1">
+          {errors.email?.message}
+        </StyledText>
       </div>
       <div>
-        <label htmlFor="phone">Celular:</label>
-        <input {...register("phone")} />
-        <span>{errors.phone?.message}</span>
+        <StyledText tag="label" htmlFor="phone">
+          Celular:
+        </StyledText>
+        <StyledTextInput {...register("phone")} />
+        <StyledText tag="span" fontSize={12} color="--alert-1">
+          {errors.phone?.message}
+        </StyledText>
       </div>
       <StyledButton type="submit">Cadastrar novo contato</StyledButton>
-    </StyledForm>
+    </Form>
   );
 };
 
