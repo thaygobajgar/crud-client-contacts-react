@@ -9,3 +9,7 @@ Para utilizar o projeto basta fazer o clone do repositório em computador e ao b
 ### ▪️ Iniciando visualização do projeto
 
 Ao finalizar o download das dependências, inicie a visualização do projeto com o comando: `yarn start`
+
+### ▪️ Back-end
+
+O Back-end desse projeto se encontra no link: https://github.com/thaygobajgar/crud-client-contacts-TypeORM
