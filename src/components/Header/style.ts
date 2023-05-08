@@ -23,11 +23,7 @@ export const StyledHeader = styled.header`
     padding: 12px 16px;
     border-radius: 12px;
     position: relative;
-
-    &:hover {
-      cursor: pointer;
-      transform: scale(1.1);
-    }
+    cursor: pointer;
 
     .userToast {
       display: flex;
@@ -35,27 +31,44 @@ export const StyledHeader = styled.header`
       align-items: center;
       justify-content: center;
       position: absolute;
-      top: 78px;
-      left: 0;
-      button {
-        height: 28px;
-        width: 72px;
-        background-color: var(--brand-1);
+      top: 70px;
+      gap: 12px;
+      background-color: var(--brand-1);
+      right: 0;
+      animation: toast 1s;
+      cursor: pointer;
+      & > span {
+        height: 42px;
+        width: 180px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 16px;
+        border: 1px solid transparent;
+
+        &:hover {
+          background-color: var(--brand-3);
+          border: 1px solid var(--white-fixed);
+        }
+      }
+
+      @keyframes toast {
+        0% {
+          top: -100px;
+        }
+        50% {
+          top: -50px;
+        }
+        100% {
+          top: 0;
+        }
       }
     }
 
     .logout {
-      border: 1px solid var(--brand-1);
-      background: var(--alert-2);
-      padding: 0.3rem;
-      border-radius: 12px;
-      color: var(--translucid);
       cursor: pointer;
-      &:hover {
-        background: var(--alert-1);
-      }
     }
-    img {
+    & > img {
       border-radius: 50px;
       border: 1px solid var(--translucid);
       width: 50px;
@@ -87,7 +100,7 @@ export const StyledHeaderForm = styled.form`
     background: var(--brand-1);
     border-radius: 10px;
     gap: 6px;
-    input {
+    & > input {
       font-size: 16px;
       color: var(--grey-0);
       background-color: transparent;

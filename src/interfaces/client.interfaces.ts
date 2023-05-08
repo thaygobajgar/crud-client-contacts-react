@@ -32,9 +32,16 @@ export interface iClientRegister {
   lastName: string;
   email: string;
   phone: string;
-  id: string;
   password: string;
   confirmPassword: string;
+}
+export interface iClientUpdate {
+  firstName?: string;
+  lastName?: string;
+  email?: string;
+  phone?: string;
+  password?: string;
+  confirmPassword?: string;
 }
 
 export interface iClientLogin {

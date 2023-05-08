@@ -35,6 +35,11 @@ export const StyledButton = styled(BaseButton)`
           background-color: var(--brand-3);
           color: var(--grey-0);
         `;
+      case "alert":
+        return css`
+          background-color: var(--alert-2);
+          color: var(--grey-0);
+        `;
       default:
         return css`
           background-color: var(--brand-3);

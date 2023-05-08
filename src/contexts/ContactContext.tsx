@@ -72,6 +72,7 @@ export const ContactContextProvider = ({ children }: iContactContextProps) => {
     contactData: IContactUpdate,
     contactId: string
   ) => {
+    console.log(contactData);
     try {
       let newData: IContactUpdate = {};
 
@@ -104,7 +105,6 @@ export const ContactContextProvider = ({ children }: iContactContextProps) => {
           if (contactId === contact.id) {
             return { ...contact, ...newData };
           } else {
-            console.log("nao");
             return contact;
           }
         }

@@ -6,9 +6,13 @@ import { useAuthContext } from "../../contexts/AuthContext";
 import { StyledText } from "../../styles/typography";
 import { VscAccount } from "react-icons/vsc";
 import { StyledTextInput } from "../../styles/input";
+import { useState } from "react";
+import Loader from "../Loader";
 
 const Header = () => {
-  const { client, clientLogout } = useAuthContext();
+  const { client, clientLogout, setEditModal, setDeleteModal } =
+    useAuthContext();
+  const [userToast, setUserToast] = useState(false);
   return (
     <StyledHeader>
       <Container>
@@ -26,22 +30,37 @@ const Header = () => {
                 <MdSearch size={20} color="rgba(255,255,255,.5)" />
               </StyledButton>
             </StyledHeaderForm>
-            <div className="userMenu">
+            <div className="userMenu" onClick={() => setUserToast(!userToast)}>
               <VscAccount />
               <StyledText>{client?.firstName}</StyledText>
-              <StyledText
-                onClick={clientLogout}
-                tag="span"
-                fontSize={12}
-                className="logout"
-              >
-                Logout
-              </StyledText>
-
-              <div className="userToast">
-                <button>Editar cadastro</button>
-                <button>Deletar cadastro</button>
-              </div>
+              {userToast && (
+                <div className="userToast">
+                  <StyledText
+                    onClick={() => setEditModal(true)}
+                    tag="span"
+                    fontSize={12}
+                    className="edit"
+                  >
+                    Editar cadastro
+                  </StyledText>
+                  <StyledText
+                    onClick={() => setDeleteModal(true)}
+                    tag="span"
+                    fontSize={12}
+                    className="delete"
+                  >
+                    Deletar cadastro
+                  </StyledText>
+                  <StyledText
+                    onClick={clientLogout}
+                    tag="span"
+                    fontSize={12}
+                    className="logout"
+                  >
+                    Logout
+                  </StyledText>
+                </div>
+              )}
             </div>
           </>
         )}
