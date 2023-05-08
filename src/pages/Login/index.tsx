@@ -1,4 +1,3 @@
-import React, { useContext, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import Header from "../../components/Header";
 import Main from "../../components/Main";
@@ -11,9 +10,9 @@ import {
   iClientRegister,
 } from "../../interfaces/client.interfaces";
 import { useNavigate } from "react-router-dom";
-import { StyledForm } from "../../components/Form/style";
 import { StyledText } from "../../styles/typography";
 import { StyledTextInput } from "../../styles/input";
+import Form from "../../components/Form";
 
 const LoginPage = () => {
   const { clientLogin } = useAuthContext();
@@ -36,7 +35,7 @@ const LoginPage = () => {
       <Header />
       <Main>
         <div>
-          <StyledForm onSubmit={handleSubmit(submit)}>
+          <Form onSubmit={handleSubmit(submit)}>
             <div>
               <StyledText tag="label" htmlFor="email">
                 Email:
@@ -54,7 +53,7 @@ const LoginPage = () => {
               {errors.password?.message}
             </StyledText>
             <StyledButton type="submit">Login</StyledButton>
-          </StyledForm>
+          </Form>
           <StyledButton onClick={() => navigate("/register")}>
             Cadastrar
           </StyledButton>
