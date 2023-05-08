@@ -17,17 +17,18 @@ export const StyledModalContainer = styled.div`
   z-index: 10;
 `;
 export const StyledModalContent = styled.div`
+  .default {
+    min-height: 380px;
+  }
   display: flex;
   flex-direction: column;
 
   width: 350px;
   max-width: 90%;
-  min-height: 380px;
 
   background-color: white;
   border: 1px solid black;
   border-radius: 14px;
-
   .modal-header {
     display: flex;
     align-items: center;
@@ -68,5 +69,9 @@ export const StyledModalContent = styled.div`
     justify-content: center;
 
     padding: 25px 2.5rem;
+  }
+
+  .small {
+    min-height: initial;
   }
 `;

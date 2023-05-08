@@ -12,20 +12,21 @@ export const StyledContactList = styled.ul`
   overflow-y: auto;
   padding: 6px;
   margin-top: 10px;
-  li {
+  & > li {
     width: 44%;
 
-    button {
+    & > button {
       background-color: var(--brand-3);
       width: 100%;
       height: 100%;
+      min-height: 80px;
     }
 
     @media (min-width: 600px) {
       width: 30%;
     }
   }
-  button {
+  & > button {
     width: 44%;
     height: 80px;
   }

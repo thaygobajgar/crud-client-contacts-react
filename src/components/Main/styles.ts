@@ -4,9 +4,9 @@ export const StyledMain = styled.main`
   width: 100%;
   height: 100%;
   display: flex;
-  align-items: center;
   justify-content: center;
-  @media (max-width: 600px) {
-    top: 200px;
+  margin-top: 16px;
+  @media (min-width: 600px) {
+    align-items: center;
   }
 `;

@@ -14,4 +14,9 @@ export const StyledDashboard = styled.div`
     min-width: 70%;
     max-width: 90%;
   }
+
+  .delete-modal {
+    display: flex;
+    gap: 16px;
+  }
 `;

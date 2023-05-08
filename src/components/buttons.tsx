@@ -6,7 +6,7 @@ interface iBaseButtonProps {
   children?: React.ReactNode;
   fontSize?: number;
   buttonSize?: "big" | "default" | "small";
-  buttonStyle?: "default" | "outline" | "inverse";
+  buttonStyle?: "default" | "outline" | "inverse" | "alert";
   type?: string;
   onClick?: (event: any) => void;
 }
