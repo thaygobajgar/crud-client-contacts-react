@@ -17,19 +17,8 @@ const Header = () => {
     <StyledHeader>
       <Container>
         Logo
-        {client && (
+        {client?.firstName && (
           <>
-            <StyledHeaderForm action="">
-              <StyledTextInput
-                type="text"
-                name="search"
-                id="search"
-                placeholder="Buscar..."
-              />
-              <StyledButton>
-                <MdSearch size={20} color="rgba(255,255,255,.5)" />
-              </StyledButton>
-            </StyledHeaderForm>
             <div className="userMenu" onClick={() => setUserToast(!userToast)}>
               <VscAccount />
               <StyledText>{client?.firstName}</StyledText>

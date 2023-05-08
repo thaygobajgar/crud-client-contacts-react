@@ -7,18 +7,16 @@ export const StyledHeader = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  .container {
+  & > .container {
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    gap: 0.2rem;
-    padding-bottom: 1rem;
+    padding: 12px;
   }
-
   .userMenu {
     display: flex;
     align-items: center;
     gap: 1rem;
+    width: 130px;
     background-color: var(--brand-3);
     padding: 12px 16px;
     border-radius: 12px;
@@ -31,8 +29,8 @@ export const StyledHeader = styled.header`
       align-items: center;
       justify-content: center;
       position: absolute;
-      top: 70px;
-      gap: 12px;
+      top: 63px;
+
       background-color: var(--brand-1);
       right: 0;
       animation: toast 1s;
@@ -44,7 +42,7 @@ export const StyledHeader = styled.header`
         align-items: center;
         justify-content: center;
         font-size: 16px;
-        border: 1px solid transparent;
+        border: 1px solid var(--white-fixed);
 
         &:hover {
           background-color: var(--brand-3);
@@ -76,16 +74,6 @@ export const StyledHeader = styled.header`
       object-fit: cover;
 
       font-size: 8px;
-    }
-  }
-
-  @media (max-width: 599px) {
-    .container {
-      flex-direction: column-reverse;
-    }
-    .userMenu {
-      width: 100%;
-      justify-content: center;
     }
   }
 `;

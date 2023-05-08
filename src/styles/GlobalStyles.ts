@@ -53,7 +53,8 @@ li{
   margin: 0 auto;
   width: 100%;
   max-width:1440px;
-  padding: 0 4rem;
+
+
  
 }
 
@@ -74,9 +75,11 @@ figure, figcaption, footer, header, menu, nav, section, audio, video, input, sel
     border: 0;
 }
 html,body{
-    width: 100vw;
+    width: 100%;
     height: 100%;
 }
 
-
+.hidden{
+    display: none;
+}
 `;
