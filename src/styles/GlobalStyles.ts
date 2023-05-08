@@ -32,7 +32,6 @@ export default createGlobalStyle`
     --success-3: #DDF3E4;
 
 
-    font-size: 60%;
 }
 
 button{
